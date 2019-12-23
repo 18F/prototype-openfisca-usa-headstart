@@ -1,0 +1,13 @@
+- name: In January 2020, a child whose family is experiencing homelessness is eligible for Head Start
+  period: 2020-01
+  input:
+    homelessness: True
+  output:
+    eligible: True
+
+- name: In January 2020, a child whose family is not experiencing homelessness is not eligible for Head Start
+  period: 2020-01
+  input:
+    homelessness: False
+  output:
+    eligible: False
