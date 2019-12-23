@@ -31,6 +31,13 @@ class eligible_tanf_or_ssi(Variable):
     reference = "https://eclkc.ohs.acf.hhs.gov/policy/45-cfr-chap-xiii/1305-2-terms"
 
 
+class income(Variable):
+    value_type = float
+    entity = Family
+    label = u"Salary earned by a family for a given year"
+    definition_period = YEAR
+
+
 class eligible(Variable):
     value_type = bool
     entity = Family
