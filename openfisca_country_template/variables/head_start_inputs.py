@@ -37,16 +37,3 @@ class income(Variable):
     label = u"Salary earned by a family for a given year"
     definition_period = YEAR
 
-
-class eligible(Variable):
-    value_type = bool
-    entity = Family
-    definition_period = MONTH
-    label = "Eligible for Head Start"
-
-    def formula(family, period):
-        homelessness = family('homelessness', period)
-        fostercare = family('fostercare', period)
-        eligible_tanf_or_ssi = family('eligible_tanf_or_ssi', period)
-
-        return (homelessness or fostercare or eligible_tanf_or_ssi)

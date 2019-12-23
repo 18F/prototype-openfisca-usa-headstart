@@ -1,8 +1,4 @@
-description: Federal Poverty Level Guidelines
-metadata:
-  reference: https://aspe.hhs.gov/poverty-guidelines
-  unit: currency-US-DOLLAR
-values:
+federal_poverty_level:
   # The 2019 poverty guidelines are in effect as of January 11, 2019.
 
   # From the YAML spec:
