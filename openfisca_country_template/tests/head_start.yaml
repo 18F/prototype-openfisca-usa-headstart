@@ -63,3 +63,27 @@
     household_size: 4
   output:
     eligible: False
+
+- name: 9-person household in MA with $47,000 annual income should be eligible
+  period: 2020
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 47_000
+    state_or_territory: MA
+    household_size: 9
+  output:
+    eligible: True
+
+- name: 9-person household in MA with $48,000 annual income should not be eligible
+  period: 2020
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 48_000
+    state_or_territory: MA
+    household_size: 9
+  output:
+    eligible: False
