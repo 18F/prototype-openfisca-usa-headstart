@@ -1,5 +1,5 @@
 - name: A child whose family is experiencing homelessness is eligible for Head Start
-  period: 2020-01
+  period: 2020
   input:
     homelessness: True
     fostercare: False
@@ -8,7 +8,7 @@
     eligible: True
 
 - name: A child in fostercare is eligible for Head Start
-  period: 2020-01
+  period: 2020
   input:
     homelessness: False
     fostercare: True
@@ -16,11 +16,14 @@
   output:
     eligible: True
 
-- name: A child whose family is not experiencing homelessness, who is not in fostercare, and who is not eligible for TANF or SSI, is not eligible for Head Start
-  period: 2020-01
+- name: No income, 4 person household, IL should be eligible
+  period: 2020
   input:
     homelessness: False
     fostercare: False
     eligible_tanf_or_ssi: False
+    income: 0
+    state_or_territory: IL
+    household_size: 4
   output:
-    eligible: False
+    eligible: True
