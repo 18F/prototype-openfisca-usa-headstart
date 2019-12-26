@@ -32,11 +32,13 @@ class eligible(Variable):
         fpl_guidelines = federal_poverty_level_data.get('federal_poverty_level').get('2019-01-11')
 
         if ((state_or_territory == 'AK') or (state_or_territory == 'HI')):
-            local_guidelines = fpl_guidelines.get(state_or_territory)
+            # TODO: Not sure why state_or_territory is being sent in as array here
+            local_guidelines = fpl_guidelines.get(state_or_territory[0])
         else:
             local_guidelines = fpl_guidelines.get('forty_eight_states_plus_dc')
 
         if (9 > household_size):
+            # TODO: Not sure why household_size is being sent in as array here
             household_size_key = str(household_size[0]) + "_person_household"
             cutoff_value = local_guidelines.get(household_size_key).get('value')
         else:

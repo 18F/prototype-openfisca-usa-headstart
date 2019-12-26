@@ -16,7 +16,7 @@
   output:
     eligible: True
 
-- name: No income, 4 person household, IL should be eligible
+- name: 4-person household in IL with no income should be eligible
   period: 2020
   input:
     homelessness: False
@@ -27,3 +27,39 @@
     household_size: 4
   output:
     eligible: True
+
+- name: 4-person household in IL with $30,000 annual income should not be eligible
+  period: 2020
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 30_000
+    state_or_territory: IL
+    household_size: 4
+  output:
+    eligible: False
+
+- name: 4-person household in AK with $30,000 annual income should be eligible
+  period: 2020
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 30_000
+    state_or_territory: AK
+    household_size: 4
+  output:
+    eligible: True
+
+- name: 4-person household in AK with $30,000 annual income should not be eligible
+  period: 2020
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 30_000
+    state_or_territory: HI
+    household_size: 4
+  output:
+    eligible: False
