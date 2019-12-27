@@ -8,7 +8,7 @@ The code in this repo is based on the [OpenFicsa Country Template](https://githu
 
 ## Local installation
 
-```
+```sh
 make install
 ```
 
@@ -17,7 +17,7 @@ make install
 To serve the Web API locally, run:
 
 ```sh
-openfisca serve --port 5000
+make serve-local
 ```
 
 To read more about the `openfisca serve` command, check out its [documentation](https://openfisca.org/doc/openfisca-python-api/openfisca_serve.html).
