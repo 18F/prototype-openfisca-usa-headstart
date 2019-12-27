@@ -6,6 +6,12 @@ This is a sketchpad prototyping repo being used by 18F's [Eligibility APIs Initi
 
 The code in this repo is based on the [OpenFicsa Country Template](https://github.com/openfisca/country-template).
 
+## Local installation
+
+```
+make install
+```
+
 ## Serve this package with the OpenFisca Web API
 
 To serve the Web API locally, run:
