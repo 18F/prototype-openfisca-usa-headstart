@@ -4,7 +4,7 @@
 # See https://openfisca.org/doc/key-concepts/variables.html.
 
 from openfisca_core.model_api import *
-from openfisca_country_template.entities import *
+from prototype_usa_head_start.entities import *
 
 
 class homelessness(Variable):
