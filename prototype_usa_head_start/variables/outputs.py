@@ -12,23 +12,13 @@ from prototype_usa_head_start.entities import *
 #     appears_ineligible = u'Appears ineligible for Head Start.'
 
 
-class head_start_eligibility_status(Variable):
+class below_federal_poverty_level(Variable):
     value_type = bool
-    # possible_values = HeadStartEligibilityStatus
-    # default_value = HeadStartEligibilityStatus.appears_ineligible
     entity = Family
     definition_period = YEAR
-    label = u"Head Start Eligibility Status"
+    label = u"Is the family below the federal poverty level?"
 
     def formula(family, period, parameters):
-        homelessness = family('homelessness', period)
-        fostercare = family('fostercare', period)
-        eligible_tanf_or_ssi = family('eligible_tanf_or_ssi', period)
-
-        # TODO: Get Head Start input on this "early return" strategy
-        if (homelessness or fostercare or eligible_tanf_or_ssi):
-            return True
-
         income = family('income', period)
         household_size = family('household_size', period)
         state_or_territory = family('state_or_territory', period)
@@ -52,6 +42,26 @@ class head_start_eligibility_status(Variable):
             people_above_8 = household_size - 8
             cutoff_value = eight_person_cutoff + (additional_per_person * people_above_8)
 
-        below_federal_poverty_level = (cutoff_value > income)
+        return (cutoff_value > income)
+
+
+class head_start_eligibility_status(Variable):
+    value_type = bool
+    # possible_values = HeadStartEligibilityStatus
+    # default_value = HeadStartEligibilityStatus.appears_ineligible
+    entity = Family
+    definition_period = YEAR
+    label = u"Head Start Eligibility Status"
+
+    def formula(family, period, parameters):
+        homelessness = family('homelessness', period)
+        fostercare = family('fostercare', period)
+        eligible_tanf_or_ssi = family('eligible_tanf_or_ssi', period)
+
+        # TODO: Get Head Start input on this "early return" strategy
+        if (homelessness or fostercare or eligible_tanf_or_ssi):
+            return True
+
+        below_federal_poverty_level = family('below_federal_poverty_level', period)
 
         return below_federal_poverty_level
