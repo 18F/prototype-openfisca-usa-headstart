@@ -5,7 +5,7 @@
     fostercare: False
     eligible_tanf_or_ssi: False
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_status: eligible
 
 - name: A child in fostercare is eligible for Head Start
   period: 2019
@@ -14,7 +14,7 @@
     fostercare: True
     eligible_tanf_or_ssi: False
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_status: eligible
 
 - name: 4-person household in IL with no income should be eligible
   period: 2019
@@ -26,7 +26,7 @@
     state_or_territory: IL
     household_size: 4
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_status: eligible
 
 - name: 4-person household in IL with $30,000 annual income should not be eligible
   period: 2019
@@ -38,7 +38,7 @@
     state_or_territory: IL
     household_size: 4
   output:
-    head_start_eligibility_status: False
+    head_start_eligibility_status: appears_ineligible
 
 - name: 4-person household in AK with $30,000 annual income should be eligible
   period: 2019
@@ -50,7 +50,7 @@
     state_or_territory: AK
     household_size: 4
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_status: eligible
 
 - name: 4-person household in AK with $30,000 annual income should not be eligible
   period: 2019
@@ -62,7 +62,7 @@
     state_or_territory: HI
     household_size: 4
   output:
-    head_start_eligibility_status: False
+    head_start_eligibility_status: appears_ineligible
 
 - name: 9-person household in MA with $47,000 annual income should be eligible
   period: 2019
@@ -74,7 +74,7 @@
     state_or_territory: MA
     household_size: 9
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_status: eligible
 
 - name: 9-person household in MA with $48,000 annual income should not be eligible
   period: 2019
@@ -86,4 +86,4 @@
     state_or_territory: MA
     household_size: 9
   output:
-    head_start_eligibility_status: False
+    head_start_eligibility_status: appears_ineligible
