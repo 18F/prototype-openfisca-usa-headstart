@@ -27,5 +27,5 @@ class CountryTaxBenefitSystem(TaxBenefitSystem):
         # We define which variable, parameter and simulation example will be used in the OpenAPI specification
         self.open_api_config = {
             "variable_example": "homelessness",
-            "parameter_example": "dummy_example",
+            "parameter_example": "federal_poverty_level",
             }
