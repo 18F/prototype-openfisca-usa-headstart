@@ -7,10 +7,9 @@ from openfisca_core.model_api import *
 from prototype_usa_head_start.entities import *
 
 
-class HeadStartEligibilityStatus(Enum):
-    eligible = u'Appears eligible for Head Start. Eligibility does not guarantee a spot. If program is over-capacity, consult Head Start guidance on selection.'
-    appears_ineligible = u'Appears ineligible for Head Start.'
-    not_enough_info = u'Need more information to determine eligibility.'
+# class HeadStartEligibilityStatus(Enum):
+#     eligible = u'Appears eligible for Head Start. Eligibility does not guarantee a spot. If program is over-capacity, consult Head Start guidance on selection.'
+#     appears_ineligible = u'Appears ineligible for Head Start.'
 
 
 class below_federal_poverty_level(Variable):
@@ -47,9 +46,9 @@ class below_federal_poverty_level(Variable):
 
 
 class head_start_eligibility_status(Variable):
-    value_type = Enum
-    possible_values = HeadStartEligibilityStatus
-    default_value = HeadStartEligibilityStatus.not_enough_info
+    value_type = bool
+    # possible_values = HeadStartEligibilityStatus
+    # default_value = HeadStartEligibilityStatus.appears_ineligible
     entity = Family
     definition_period = YEAR
     label = u"Head Start Eligibility Status"
@@ -61,11 +60,8 @@ class head_start_eligibility_status(Variable):
 
         # TODO: Get Head Start input on this "early return" strategy
         if (homelessness or fostercare or eligible_tanf_or_ssi):
-            return HeadStartEligibilityStatus.eligible
+            return True
 
         below_federal_poverty_level = family('below_federal_poverty_level', period)
 
-        if below_federal_poverty_level:
-            return HeadStartEligibilityStatus.eligible
-        else:
-            return HeadStartEligibilityStatus.appears_ineligible
+        return below_federal_poverty_level
