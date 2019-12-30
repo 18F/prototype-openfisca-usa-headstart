@@ -23,6 +23,13 @@ def household_to_cutoff_value(household_size_and_fpl_scale):
         raise ValueError('Household size out of bounds (at or below zero).')
 
 
+def eligibility_bool_to_status_message(eligibility_bool):
+    if eligibility_bool:
+        return 'Eligibile for Head Start. Spot not guaranteed.'
+    else:
+        return 'Appears ineligible for Head Start.'
+
+
 class federal_poverty_line_value(Variable):
     value_type = int
     entity = Family
@@ -64,11 +71,11 @@ class below_federal_poverty_level(Variable):
             )
 
 
-class head_start_eligibility_status(Variable):
+class head_start_eligibility_bool(Variable):
     value_type = bool
     entity = Family
     definition_period = YEAR
-    label = u"Head Start Eligibility Status"
+    label = u"Head Start Eligibility Boolean"
 
     def formula(family, period, parameters):
         return (
@@ -77,3 +84,16 @@ class head_start_eligibility_status(Variable):
             + family('eligible_tanf_or_ssi', period)
             + family('below_federal_poverty_level', period)
             )
+
+
+class head_start_eligibility_status(Variable):
+    value_type = str
+    entity = Family
+    definition_period = YEAR
+    label = u"Head Start Eligibility Status"
+
+    def formula(family, period, parameters):
+        return list(map(
+            eligibility_bool_to_status_message,
+            family('head_start_eligibility_bool', period),
+            ))

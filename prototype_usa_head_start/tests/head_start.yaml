@@ -8,7 +8,7 @@
     state_or_territory: CA
     income: 60_000  # Above the 2019 poverty line value in any state.
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_bool: True
 
 - name: A child in fostercare is eligible for Head Start
   period: 2019
@@ -20,7 +20,7 @@
     state_or_territory: CA
     income: 60_000  # Above the 2019 poverty line value in any state.
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_bool: True
 
 - name: 4-person household in IL with no income should be eligible
   period: 2019
@@ -32,7 +32,7 @@
     state_or_territory: IL
     household_size: 4
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_bool: True
 
 - name: 4-person household in IL with $30,000 annual income should not be eligible
   period: 2019
@@ -44,7 +44,7 @@
     state_or_territory: IL
     household_size: 4
   output:
-    head_start_eligibility_status: False
+    head_start_eligibility_bool: False
 
 - name: 4-person household in AK with $30,000 annual income should be eligible
   period: 2019
@@ -56,7 +56,7 @@
     state_or_territory: AK
     household_size: 4
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_bool: True
 
 - name: 4-person household in AK with $30,000 annual income should not be eligible
   period: 2019
@@ -68,7 +68,7 @@
     state_or_territory: HI
     household_size: 4
   output:
-    head_start_eligibility_status: False
+    head_start_eligibility_bool: False
 
 - name: 9-person household in MA with $47,000 annual income should be eligible
   period: 2019
@@ -80,7 +80,7 @@
     state_or_territory: MA
     household_size: 9
   output:
-    head_start_eligibility_status: True
+    head_start_eligibility_bool: True
 
 - name: 9-person household in MA with $48,000 annual income should not be eligible
   period: 2019
@@ -92,4 +92,4 @@
     state_or_territory: MA
     household_size: 9
   output:
-    head_start_eligibility_status: False
+    head_start_eligibility_bool: False
