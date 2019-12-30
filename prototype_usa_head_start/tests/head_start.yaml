@@ -4,6 +4,9 @@
     homelessness: True
     fostercare: False
     eligible_tanf_or_ssi: False
+    household_size: 2
+    state_or_territory: CA
+    income: 60_000  # Above the 2019 poverty line value in any state.
   output:
     head_start_eligibility_status: True
 
@@ -13,6 +16,9 @@
     homelessness: False
     fostercare: True
     eligible_tanf_or_ssi: False
+    household_size: 2
+    state_or_territory: CA
+    income: 60_000  # Above the 2019 poverty line value in any state.
   output:
     head_start_eligibility_status: True
 
