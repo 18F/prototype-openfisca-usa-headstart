@@ -1,8 +1,9 @@
+# SOURCE: https://aspe.hhs.gov/poverty-guidelines.
+
 # The 2019 poverty guidelines are in effect as of January 11, 2019.
 
 # From the YAML spec:
-# Any “_” characters in [integers] are ignored, allowing a readable representation of large values.
-# Reference: https://yaml.org/type/int.html.
+# Any “_” characters in [integers] are ignored, allowing a readable representation of large values. Reference: https://yaml.org/type/int.html.
 
 DEFAULT:
   1_person_household:
