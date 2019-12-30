@@ -37,10 +37,10 @@ check-style:
 	flake8 `git ls-files | grep "\.py$$"`
 
 test: clean check-syntax-errors check-style
-	openfisca-run-test --country-package prototype_usa_head_start prototype_usa_head_start/tests
+	openfisca test --country-package prototype_usa_head_start prototype_usa_head_start/tests
 
 test-dev: clean check-syntax-errors
-	openfisca-run-test --country-package prototype_usa_head_start prototype_usa_head_start/tests
+	openfisca test --country-package prototype_usa_head_start prototype_usa_head_start/tests
 
 serve-local:
 	openfisca serve --country-package prototype_usa_head_start --port 5000
