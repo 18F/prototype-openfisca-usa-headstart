@@ -70,7 +70,7 @@ class head_start_eligibility_status(Variable):
 
     def formula(family, period, parameters):
         return (
-            + family('homelessness', period)
+            family('homelessness', period)
             + family('fostercare', period)
             + family('eligible_tanf_or_ssi', period)
             + family('below_federal_poverty_level', period)
