@@ -1,0 +1,13 @@
+{
+    "families": {
+        "_": {
+            "homelessness": { "2019": true },
+            "fostercare": { "2019": false },
+            "eligible_tanf_or_ssi": { "2019": false },
+            "household_size": { "2019": 2 },
+            "state_or_territory": { "2019": "CA" },
+            "income": { "2019": 60000 },
+            "head_start_eligibility_status": { "2019": null }
+        }
+    }
+}

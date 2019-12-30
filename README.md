@@ -20,8 +20,6 @@ To serve the Web API locally, run:
 make serve-local
 ```
 
-To read more about the `openfisca serve` command, check out its [documentation](https://openfisca.org/doc/openfisca-python-api/openfisca_serve.html).
-
 You can make sure that your instance of the API is working by requesting:
 
 ```sh
@@ -30,4 +28,12 @@ curl "http://localhost:5000/spec"
 
 This endpoint returns the [Open API specification](https://www.openapis.org/) of your API.
 
-:tada: This OpenFisca Country Package is now served by the OpenFisca Web API! To learn more, go to the [OpenFisca Web API documentation](https://openfisca.org/doc/openfisca-web-api/index.html)
+Test sample POST requests to the server:
+
+```sh
+# Family that appears eligible
+curl -X POST -H "Content-Type: application/json" -d @./prototype_usa_head_start/situation_examples/family.json http://localhost:5000/calculate
+
+# Family that appears ineligible
+curl -X POST -H "Content-Type: application/json" -d @./prototype_usa_head_start/situation_examples/appears_ineligible_family.json http://localhost:5000/calculate
+```
