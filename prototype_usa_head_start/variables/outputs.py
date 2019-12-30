@@ -14,11 +14,13 @@ def household_to_cutoff_value(household_size_and_fpl_scale):
 
     if (0 < household_size < 9):
         return scale[str(household_size) + "_person_household"]
-    else:
+    elif (9 <= household_size):
         return (
             scale["8_person_household"]
             + ((household_size - 8) * (scale['additional_per_person_above_8']))
             )
+    elif (household_size <= 0):
+        raise ValueError('Household size out of bounds (at or below zero).')
 
 
 class federal_poverty_line_value(Variable):
