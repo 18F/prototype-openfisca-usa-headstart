@@ -12,6 +12,12 @@ The code in this repo is based on the [OpenFicsa Country Template](https://githu
 make install
 ```
 
+## Run tests
+
+```sh
+make test
+```
+
 ## Serve this package locally with the OpenFisca Web API
 
 To serve the Web API locally, run:
@@ -33,11 +39,9 @@ Test sample POST requests to the server:
 ```sh
 # Family that appears eligible
 curl -X POST -H "Content-Type: application/json" \
-  -d @./prototype_usa_head_start/situation_examples/family.json \
-  http://localhost:5000/calculate
+  -d @./prototype_usa_head_start/situation_examples/family.json http://localhost:5000/calculate
 
 # Family that appears ineligible
 curl -X POST -H "Content-Type: application/json" \
-  -d @./prototype_usa_head_start/situation_examples/appears_ineligible_family.json \
-  http://localhost:5000/calculate
+  -d @./prototype_usa_head_start/situation_examples/appears_ineligible_family.json http://localhost:5000/calculate
 ```
