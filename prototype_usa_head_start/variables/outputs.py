@@ -80,6 +80,10 @@ class head_start_eligibility_bool(Variable):
             )
 
 
+def add_eligibility_reason(current_string, bool_series, statement):
+    return concat(current_string, where(bool_series, statement, ''))
+
+
 class head_start_eligibility_status(Variable):
     value_type = str
     entity = Family
@@ -87,8 +91,36 @@ class head_start_eligibility_status(Variable):
     label = u"Head Start Eligibility Status"
 
     def formula(family, period, parameters):
-        eligible_status = 'Eligibile for Head Start. Slot in a program not guaranteed.'
-        maybe_status = 'May be eligible, depending on the child\'s needs and the slots available.'
+        eligible_status = 'Eligible for Head Start. Slot in a program not guaranteed.'
+        maybe_status = 'May be Eligible, depending on the child\'s needs and the slots available.'
         eligibility_boolean  = family('head_start_eligibility_bool', period)
 
-        return where(eligibility_boolean  == True, eligible_status, maybe_status)
+        determination = where(eligibility_boolean, eligible_status, maybe_status)
+
+        with_homelessness_factor = add_eligibility_reason(
+            determination,
+            family('homelessness', period),
+            ' Eligible because the family is experiencing homelessness.'
+            )
+
+        with_fostercare_factor = add_eligibility_reason(
+            with_homelessness_factor,
+            family('fostercare', period),
+            ' Eligible because the child is in foster care.'
+            )
+
+        with_tanf_ssi_factor = add_eligibility_reason(
+            with_fostercare_factor,
+            family('eligible_tanf_or_ssi', period),
+            ' Eligible because of eligibility for TANF or SSI.'
+            )
+
+        with_poverty_line_factor = add_eligibility_reason(
+            with_tanf_ssi_factor,
+            family('below_federal_poverty_level', period),
+            ' Eligible because family is below the federal poverty line.'
+        )
+
+        result = with_poverty_line_factor
+
+        return result
