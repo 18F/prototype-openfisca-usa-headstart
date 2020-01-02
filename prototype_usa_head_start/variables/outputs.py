@@ -80,18 +80,6 @@ class head_start_eligibility_bool(Variable):
             )
 
 
-def eligibility_bool_to_status_message(eligibility_bool):
-    statuses = {
-        'eligible': 'Eligibile for Head Start. Slot in a program not guaranteed.',
-        'maybe_eligible': 'May be eligible, depending on the child\'s needs and the slots available.'
-    }
-
-    if eligibility_bool:
-        return statuses['eligible']
-    else:
-        return statuses['maybe_eligible']
-
-
 class head_start_eligibility_status(Variable):
     value_type = str
     entity = Family
@@ -99,7 +87,8 @@ class head_start_eligibility_status(Variable):
     label = u"Head Start Eligibility Status"
 
     def formula(family, period, parameters):
-        return list(map(
-            eligibility_bool_to_status_message,
-            family('head_start_eligibility_bool', period),
-            ))
+        eligible_status = 'Eligibile for Head Start. Slot in a program not guaranteed.'
+        maybe_status = 'May be eligible, depending on the child\'s needs and the slots available.'
+        eligibility_boolean  = family('head_start_eligibility_bool', period)
+
+        return where(eligibility_boolean  == True, eligible_status, maybe_status)
