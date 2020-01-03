@@ -1,0 +1,6 @@
+---
+applications:
+- name: prototype-openfisca-usa-headstart
+  buildpacks:
+    - python_buildpack
+  memory: 256M
