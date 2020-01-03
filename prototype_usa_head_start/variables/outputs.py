@@ -93,7 +93,7 @@ class head_start_eligibility_status(Variable):
     def formula(family, period, parameters):
         eligible_status = 'Eligible for Head Start. Slot in a program not guaranteed.'
         maybe_status = 'May be Eligible, depending on the child\'s needs and the slots available.'
-        eligibility_boolean  = family('head_start_eligibility_bool', period)
+        eligibility_boolean = family('head_start_eligibility_bool', period)
 
         determination = where(eligibility_boolean, eligible_status, maybe_status)
 
