@@ -4,4 +4,5 @@ applications:
   buildpacks:
     - python_buildpack
   memory: 256M
+  timeout: 180
   command: make serve
