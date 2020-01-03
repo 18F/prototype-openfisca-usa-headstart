@@ -119,7 +119,7 @@ class head_start_eligibility_status(Variable):
             with_tanf_ssi_factor,
             family('below_federal_poverty_level', period),
             ' Eligible because family is below the federal poverty line.'
-        )
+            )
 
         result = with_poverty_line_factor
 
