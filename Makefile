@@ -8,7 +8,7 @@ clean:
 	find . -name '*.pyc' -exec rm \{\} \;
 
 deps:
-	pip install --upgrade pip twine wheel
+	pip3 install --upgrade pip twine wheel
 
 install: deps
 	@# Install OpenFisca-Extension-Template for development.
