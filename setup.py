@@ -3,21 +3,19 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "OpenFisca-Country-Template",
-    version = "3.9.6",
-    author = "OpenFisca Team",
-    author_email = "contact@openfisca.org",
+    name = "Prototype OpenFisca USA Head Start",
+    version = "0.0.1",
+    author = "Alex Soble, 18F",
+    author_email = "",
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: GNU Affero General Public License v3",
         "Operating System :: POSIX",
         "Programming Language :: Python",
-        "Topic :: Scientific/Engineering :: Information Analysis",
         ],
-    description = "OpenFisca tax and benefit system for Country-Template",
-    keywords = "benefit microsimulation social tax",
-    license ="http://www.fsf.org/licensing/licenses/agpl-3.0.html",
-    url = "https://github.com/openfisca/country-template",
+    description = "Sketchpad prototyping repo being used by 18F's Eligibility APIs Initiative",
+    keywords = "",
+    license = "http://www.fsf.org/licensing/licenses/agpl-3.0.html",
+    url = "https://github.com/18f/prototype-openfisca-usa-headstart/",
     include_package_data = True,  # Will read MANIFEST.in
     data_files = [
         ("share/openfisca/openfisca-country-template", ["CHANGELOG.md", "LICENSE", "README.md"]),
