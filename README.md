@@ -49,3 +49,9 @@ curl -X POST -H "Content-Type: application/json" \
 curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/family_eligible_multiple_reasons.json http://localhost:5000/calculate
 ```
+
+## Deploy
+
+This app has been configured to deploy to [cloud.gov](https://cloud.gov/) with a `manifest.yml` file. See cloud.gov's ["Your first deploy"](https://cloud.gov/docs/getting-started/your-first-deploy/) guide for instructions on deploying.
+
+Our (sandbox) prototype app is hosted on cloud.gov at (https://prototype-openfisca-usa-headstart.app.cloud.gov/). This app is not reliable or stable since sandbox deployments are cleared every 90 days.
