@@ -46,4 +46,4 @@ serve-local:
 	openfisca serve --country-package prototype_usa_head_start --port 5000
 
 serve: build
-	openfisca serve --country-package prototype_usa_head_start --port ${PORT}
+	openfisca serve --country-package prototype_usa_head_start --bind "0.0.0.0:${PORT}"
