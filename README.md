@@ -52,6 +52,8 @@ curl -X POST -H "Content-Type: application/json" \
 
 ## Deploy
 
-This app has been configured to deploy to [cloud.gov](https://cloud.gov/) with a `manifest.yml` file. See cloud.gov's ["Your first deploy"](https://cloud.gov/docs/getting-started/your-first-deploy/) guide for instructions on deploying.
+This app has been configured to deploy to [cloud.gov](https://cloud.gov/) with a `manifest.yml` file.
 
-Our (sandbox) prototype app is hosted on cloud.gov at (https://prototype-openfisca-usa-headstart.app.cloud.gov/). This app is not reliable or stable since sandbox deployments are cleared every 90 days.
+See cloud.gov's ["Your first deploy"](https://cloud.gov/docs/getting-started/your-first-deploy/) guide for deployment instructions.
+
+Our sandbox prototype app is hosted on cloud.gov at https://prototype-openfisca-usa-headstart.app.cloud.gov/. This app is not reliable or stable, since sandbox deployments are cleared by cloud.gov every 90 days.
