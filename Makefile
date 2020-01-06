@@ -45,5 +45,5 @@ test-dev: clean check-syntax-errors
 serve-local:
 	openfisca serve --country-package prototype_usa_head_start --port 5000
 
-serve:
+serve: build
 	openfisca serve --country-package prototype_usa_head_start --port ${PORT}
