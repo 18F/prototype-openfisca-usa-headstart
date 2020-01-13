@@ -56,7 +56,7 @@ curl -X POST -H "Content-Type: application/json" \
 
 ## Rebuild
 
-Some changes to the code — for example, adding a new input variable — require re-building the project before they are available to you locally. Run:
+Some changes to the code — for example, adding a new input variable — require re-building the project before they become available to you locally. Run:
 
 ```
 make build
