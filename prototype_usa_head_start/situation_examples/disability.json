@@ -1,7 +1,7 @@
 {
     "families": {
         "_": {
-            "homelessness": { "2019": true },
+            "homelessness": { "2019": false },
             "fostercare": { "2019": false },
             "eligible_tanf_or_ssi": { "2019": false },
             "household_size": { "2019": 2 },
