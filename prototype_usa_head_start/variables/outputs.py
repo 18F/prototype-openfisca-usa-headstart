@@ -65,7 +65,7 @@ class below_federal_poverty_level(Variable):
             )
 
 
-class between_fpl_and_130_fpl(Variable):
+class income_between_fpl_and_130_fpl(Variable):
     value_type = bool
     entity = Family
     definition_period = YEAR
@@ -144,7 +144,7 @@ class head_start_eligibility_status(Variable):
 
         with_130_fpl_factor = add_eligibility_reason(
             with_disability_factor,
-            family('between_fpl_and_130_fpl', period),
+            family('income_between_fpl_and_130_fpl', period),
             ' May be eligible because family income is below 130 percent of the federal poverty level. Some Head Start programs have additional capacity for children have families at this income level.'
             )
 
