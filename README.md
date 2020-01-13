@@ -54,7 +54,7 @@ curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/disability.json http://localhost:5000/calculate
 ```
 
-Or, for a prettier JSON respone:
+Or, for a prettier JSON response, use [jq](https://stedolan.github.io/jq/):
 
 ```sh
 # Family with a child who has a disability
