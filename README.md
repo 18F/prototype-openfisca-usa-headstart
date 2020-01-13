@@ -54,6 +54,14 @@ curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/disability.json http://localhost:5000/calculate
 ```
 
+## Rebuild
+
+Some changes to the code — for example, adding a new input variable — require re-building the project before they are available to you locally. Run:
+
+```
+make build
+```
+
 ## Deploy
 
 This app has been configured to deploy to [cloud.gov](https://cloud.gov/) with a `manifest.yml` file.
