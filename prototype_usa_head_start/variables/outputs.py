@@ -91,6 +91,9 @@ class head_start_eligibility_status(Variable):
     label = u"Head Start Eligibility Status"
 
     def formula(family, period, parameters):
+        # TODO (ARS): Check with Head Start about whether the API should return
+        # may be status or eligible status for child with a disability.
+
         eligible_status = 'Eligible for Head Start. Slot in a program not guaranteed.'
         maybe_status = 'May be Eligible, depending on the child\'s needs and the slots available.'
         eligibility_boolean = family('head_start_eligibility_bool', period)
