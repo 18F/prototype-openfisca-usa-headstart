@@ -57,11 +57,23 @@ class below_federal_poverty_level(Variable):
     value_type = bool
     entity = Family
     definition_period = YEAR
-    label = u"Is the family below the federal poverty level?"
+    label = u"Is the family's income below the federal poverty level?"
 
     def formula(family, period, parameters):
         return (
             family('federal_poverty_line_value', period) > family('income', period)
+            )
+
+
+class between_fpl_and_130_fpl(Variable):
+    value_type = bool
+    entity = Family
+    definition_period = YEAR
+    label = u"Is the family's income below 130 percent of the federal poverty level?"
+
+    def formula(family, period, parameters):
+        return (
+            (family('federal_poverty_line_value', period) * 1.3) > family('income', period) > family('federal_poverty_line_value', period)
             )
 
 
@@ -130,6 +142,12 @@ class head_start_eligibility_status(Variable):
             ' May be eligible due to the child\'s disability. Head Start programs must fill 10 percent of slots with children covered by the Individuals with Disabilities Education Act.'
             )
 
-        result = with_disability_factor
+        with_130_fpl_factor = add_eligibility_reason(
+            with_disability_factor,
+            family('between_fpl_and_130_fpl', period),
+            ' May be eligible because family income is below 130 percent of the federal poverty level. Some Head Start programs have additional capacity for children have families at this income level.'
+            )
+
+        result = with_130_fpl_factor
 
         return result
