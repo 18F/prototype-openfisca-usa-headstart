@@ -121,6 +121,12 @@ class head_start_eligibility_status(Variable):
             ' Eligible because family is below the federal poverty line.'
             )
 
-        result = with_poverty_line_factor
+        with_disability_factor = add_eligibility_reason(
+            with_poverty_line_factor,
+            family('disability', period),
+            ' May be eligible due to the child\'s disability. Head Start programs must fill 10 percent of slots with children covered by the Individuals with Disabilities Education Act.'
+            )
+
+        result = with_disability_factor
 
         return result
