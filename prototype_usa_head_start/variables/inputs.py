@@ -50,3 +50,11 @@ class state_or_territory(Variable):
     entity = Family
     label = u"U.S. state, territory, or district where the family lives"
     definition_period = YEAR
+
+
+class disability(Variable):
+    value_type = bool
+    entity = Family
+    label = u"Does the child have a disability? Head Start programs must ensure at least 10 percent of its total funded enrollment is filled by children eligible for services under IDEA, the Individuals with Disabilities Education Act."
+    definition_period = YEAR
+    reference = "https://eclkc.ohs.acf.hhs.gov/policy/45-cfr-chap-xiii/1302-14-selection-process"
