@@ -91,6 +91,9 @@ class head_start_eligibility_status(Variable):
     label = u"Head Start Eligibility Status"
 
     def formula(family, period, parameters):
+        # TODO (ARS): Check with Head Start about whether the API should return
+        # may be status or eligible status for child with a disability.
+
         eligible_status = 'Eligible for Head Start. Slot in a program not guaranteed.'
         maybe_status = 'May be Eligible, depending on the child\'s needs and the slots available.'
         eligibility_boolean = family('head_start_eligibility_bool', period)
@@ -121,6 +124,12 @@ class head_start_eligibility_status(Variable):
             ' Eligible because family is below the federal poverty line.'
             )
 
-        result = with_poverty_line_factor
+        with_disability_factor = add_eligibility_reason(
+            with_poverty_line_factor,
+            family('disability', period),
+            ' May be eligible due to the child\'s disability. Head Start programs must fill 10 percent of slots with children covered by the Individuals with Disabilities Education Act.'
+            )
+
+        result = with_disability_factor
 
         return result

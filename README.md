@@ -48,6 +48,18 @@ curl -X POST -H "Content-Type: application/json" \
 # Family that is eligible for multiple reasons
 curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/family_eligible_multiple_reasons.json http://localhost:5000/calculate
+
+# Family with a child who has a disability
+curl -X POST -H "Content-Type: application/json" \
+  -d @./prototype_usa_head_start/situation_examples/disability.json http://localhost:5000/calculate
+```
+
+## Rebuild
+
+Some changes to the code — for example, adding a new input variable — require re-building the project before they become available to you locally. Run:
+
+```
+make build
 ```
 
 ## Deploy
