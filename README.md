@@ -54,6 +54,15 @@ curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/disability.json http://localhost:5000/calculate
 ```
 
+Or, for a prettier JSON respone:
+
+```sh
+# Family with a child who has a disability
+curl -X POST -H "Content-Type: application/json" \
+  -d @./prototype_usa_head_start/situation_examples/disability.json http://localhost:5000/calculate \
+  | jq
+```
+
 ## Rebuild
 
 Some changes to the code — for example, adding a new input variable — require re-building the project before they become available to you locally. Run:
