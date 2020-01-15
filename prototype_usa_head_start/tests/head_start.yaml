@@ -130,7 +130,7 @@
   output:
     income_between_fpl_and_130_fpl: True
 
-- name: A family whose income is exactly 130% of the FPL for their state and household size falls between 100% and 130% of FPL
+- name: A family whose income is exactly 130% of the FPL for their state and household size falls between 100% and 130% of FPL (the 130% is treated inclusively just as the 100% is treated inclusively in "equal to or below poverty level")
   period: 2019
   input:
     homelessness: False
@@ -140,7 +140,7 @@
     state_or_territory: IL
     household_size: 2
   output:
-    income_between_fpl_and_130_fpl: True # This is currently failing...
+    income_between_fpl_and_130_fpl: True
 
 - name: A family whose income is $1 above 130% of the FPL for their state and household size does not fall between 100% and 130% of FPL
   period: 2019

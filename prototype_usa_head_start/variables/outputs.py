@@ -75,6 +75,7 @@ class income_between_fpl_and_130_fpl(Variable):
     label = u"Is the family's income below 130 percent of the federal poverty level?"
     # From the policy:
     # If a program chooses to enroll participants who do not meet a criterion in paragraph (c) of this section, and whose family incomes are between 100 and 130 percent of the poverty line, ...
+    # TODO (ARS): Check the below with Head Start.
     # NOTE (ARS): Since the eligibility rules reference "equal to or below the poverty line" for purposes of determining eligibility, I interpret "between 100 and 130 percent" to be inclusive of 130 percent.
     # SOURCE: https://eclkc.ohs.acf.hhs.gov/policy/45-cfr-chap-xiii/1302-12-determining-verifying-documenting-eligibility
 
