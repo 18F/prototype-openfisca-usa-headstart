@@ -113,7 +113,7 @@ class head_start_eligibility_status(Variable):
     def formula(family, period, parameters):
         # TODO (ARS): Check with Head Start about whether the API should return
         # may be status or eligible status for child with a disability.
-
+        # TODO (ARS): Same with ([100% FPL] < income =< [130% FPL]).
         eligible_status = 'Eligible for Head Start. Slot in a program not guaranteed.'
         maybe_status = 'May be Eligible, depending on the child\'s needs and the slots available.'
         eligibility_boolean = family('head_start_eligibility_bool', period)
@@ -147,13 +147,15 @@ class head_start_eligibility_status(Variable):
         with_disability_factor = add_eligibility_reason(
             with_poverty_line_factor,
             family('disability', period),
+            # TODO (ARS): Check language with Head Start counterparts.
             ' May be eligible due to the child\'s disability. Head Start programs must fill 10 percent of slots with children covered by the Individuals with Disabilities Education Act.'
             )
 
         with_130_fpl_factor = add_eligibility_reason(
             with_disability_factor,
             family('income_between_fpl_and_130_fpl', period),
-            ' May be eligible because family income is below 130 percent of the federal poverty level. Some Head Start programs have additional capacity for children have families at this income level.'
+            # TODO (ARS): Check language with Head Start counterparts.
+            ' May be eligible because family income is equal to or below 130 percent of the federal poverty level. Some Head Start programs have additional capacity for families with income in this range.'
             )
 
         result = with_130_fpl_factor
