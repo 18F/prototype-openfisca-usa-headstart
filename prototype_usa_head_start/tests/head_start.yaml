@@ -9,6 +9,7 @@
     income: 60_000  # Above the 2019 poverty line value in any state.
   output:
     head_start_eligibility_bool: True
+    head_start_eligibility_status: "I expect this test to fail because it does not match this string exactly: Eligible for Head Start. Slot in a program not guaranteed. Eligible because the family is experiencing homelessness."
 
 - name: A child in fostercare is eligible for Head Start
   period: 2019
