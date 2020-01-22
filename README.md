@@ -59,12 +59,14 @@ Or, for a prettier JSON response, use [jq](https://stedolan.github.io/jq/):
 ```sh
 # Family with a child who has a disability
 curl -X POST -H "Content-Type: application/json" \
-  -d @./prototype_usa_head_start/situation_examples/disability.json http://localhost:5000/calculate \
+  -d @./prototype_usa_head_start/situation_examples/disability.json \
+  http://localhost:5000/calculate \
   | jq
 
 # Family with income slightly above the federal poverty level
 curl -X POST -H "Content-Type: application/json" \
-  -d @./prototype_usa_head_start/situation_examples/family_slightly_above_100_fpl_il.json http://localhost:5000/calculate \
+  -d @./prototype_usa_head_start/situation_examples/family_slightly_above_100_fpl_il.json \
+  http://localhost:5000/calculate \
   | jq
 ```
 
@@ -92,10 +94,23 @@ If you want to test out the API without serving it locally, feel free to send JS
 # Family that appears eligible
 curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/family.json \
-  https://prototype-openfisca-usa-headstart.app.cloud.gov/calculate | jq
+  https://prototype-openfisca-usa-headstart.app.cloud.gov/calculate | \
+  jq
 
 # Family that appears ineligible
 curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/appears_ineligible_family.json \
-  https://prototype-openfisca-usa-headstart.app.cloud.gov/calculate | jq
+  https://prototype-openfisca-usa-headstart.app.cloud.gov/calculate | \
+  jq
+
+# Family with a child who has a disability
+curl -X POST -H "Content-Type: application/json" \
+  -d @./prototype_usa_head_start/situation_examples/disability.json \
+  https://prototype-openfisca-usa-headstart.app.cloud.gov/calculate | \
+  jq
+
+# Family with income slightly above the federal poverty level
+curl -X POST -H "Content-Type: application/json" \
+  -d @./prototype_usa_head_start/situation_examples/family_slightly_above_100_fpl_il.json https://prototype-openfisca-usa-headstart.app.cloud.gov/calculate | \
+  jq
 ```
