@@ -105,3 +105,52 @@
     household_size: 9
   output:
     head_start_eligibility_bool: False
+
+- name: A family whose income is the same as the FPL for their state does not fall between 100% and 130% of FPL (it falls under "equal to or below the poverty level" instead and means the family is eligible)
+  period: 2019
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 16_910
+    state_or_territory: IL
+    household_size: 2
+  output:
+    income_between_fpl_and_130_fpl: False
+
+- name: A family whose income is $1 above the FPL for their state and household size falls between 100% and 130% of FPL
+  period: 2019
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 16_911
+    state_or_territory: IL
+    household_size: 2
+  output:
+    income_between_fpl_and_130_fpl: True
+
+- name: A family whose income is exactly 130% of the FPL for their state and household size falls between 100% and 130% of FPL (the 130% is treated inclusively just as the 100% is treated inclusively in "equal to or below poverty level")
+  period: 2019
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 21_983
+    state_or_territory: IL
+    household_size: 2
+  output:
+    income_between_fpl_and_130_fpl: True
+
+- name: A family whose income is $1 above 130% of the FPL for their state and household size does not fall between 100% and 130% of FPL
+  period: 2019
+  input:
+    homelessness: False
+    fostercare: False
+    eligible_tanf_or_ssi: False
+    income: 21_984
+    state_or_territory: IL
+    household_size: 2
+  output:
+    income_between_fpl_and_130_fpl: False
+

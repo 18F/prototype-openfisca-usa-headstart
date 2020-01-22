@@ -53,15 +53,35 @@ class federal_poverty_line_value(Variable):
                     ))
 
 
-class below_federal_poverty_level(Variable):
+class equal_to_or_below_federal_poverty_level(Variable):
     value_type = bool
     entity = Family
     definition_period = YEAR
-    label = u"Is the family below the federal poverty level?"
+    label = u"Is the family's income below the federal poverty level?"
+    # From the policy:
+    # "Eligibility requirements. (1) A pregnant woman or a child is eligible if: (i) The family’s income is equal to or below the poverty line...""
+    # SOURCE: https://eclkc.ohs.acf.hhs.gov/policy/45-cfr-chap-xiii/1302-12-determining-verifying-documenting-eligibility
 
     def formula(family, period, parameters):
         return (
-            family('federal_poverty_line_value', period) > family('income', period)
+            family('federal_poverty_line_value', period) >= family('income', period)
+            )
+
+
+class income_between_fpl_and_130_fpl(Variable):
+    value_type = bool
+    entity = Family
+    definition_period = YEAR
+    label = u"Is the family's income below 130 percent of the federal poverty level?"
+    # From the policy:
+    # If a program chooses to enroll participants who do not meet a criterion in paragraph (c) of this section, and whose family incomes are between 100 and 130 percent of the poverty line, ...
+    # TODO (ARS): Check the below with Head Start.
+    # NOTE (ARS): Since the eligibility rules reference "equal to or below the poverty line" for purposes of determining eligibility, I interpret "between 100 and 130 percent" to be inclusive of 130 percent.
+    # SOURCE: https://eclkc.ohs.acf.hhs.gov/policy/45-cfr-chap-xiii/1302-12-determining-verifying-documenting-eligibility
+
+    def formula(family, period, parameters):
+        return (
+            (family('federal_poverty_line_value', period) * 1.3) >= family('income', period) > family('federal_poverty_line_value', period)
             )
 
 
@@ -76,7 +96,7 @@ class head_start_eligibility_bool(Variable):
             family('homelessness', period)
             + family('fostercare', period)
             + family('eligible_tanf_or_ssi', period)
-            + family('below_federal_poverty_level', period)
+            + family('equal_to_or_below_federal_poverty_level', period)
             )
 
 
@@ -93,7 +113,7 @@ class head_start_eligibility_status(Variable):
     def formula(family, period, parameters):
         # TODO (ARS): Check with Head Start about whether the API should return
         # may be status or eligible status for child with a disability.
-
+        # TODO (ARS): Same with ([100% FPL] < income =< [130% FPL]).
         eligible_status = 'Eligible for Head Start. Slot in a program not guaranteed.'
         maybe_status = 'May be Eligible, depending on the child\'s needs and the slots available.'
         eligibility_boolean = family('head_start_eligibility_bool', period)
@@ -120,16 +140,24 @@ class head_start_eligibility_status(Variable):
 
         with_poverty_line_factor = add_eligibility_reason(
             with_tanf_ssi_factor,
-            family('below_federal_poverty_level', period),
+            family('equal_to_or_below_federal_poverty_level', period),
             ' Eligible because family is below the federal poverty line.'
             )
 
         with_disability_factor = add_eligibility_reason(
             with_poverty_line_factor,
             family('disability', period),
+            # TODO (ARS): Check language with Head Start counterparts.
             ' May be eligible due to the child\'s disability. Head Start programs must fill 10 percent of slots with children covered by the Individuals with Disabilities Education Act.'
             )
 
-        result = with_disability_factor
+        with_130_fpl_factor = add_eligibility_reason(
+            with_disability_factor,
+            family('income_between_fpl_and_130_fpl', period),
+            # TODO (ARS): Check language with Head Start counterparts.
+            ' May be eligible because family income is equal to or below 130 percent of the federal poverty level. Some Head Start programs have additional capacity for families with income in this range.'
+            )
+
+        result = with_130_fpl_factor
 
         return result

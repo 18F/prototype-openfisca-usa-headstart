@@ -42,7 +42,7 @@ test: clean check-syntax-errors check-style
 test-dev: clean check-syntax-errors
 	openfisca test --country-package prototype_usa_head_start prototype_usa_head_start/tests
 
-serve-local:
+serve-local: build
 	openfisca serve --country-package prototype_usa_head_start --port 5000
 
 serve: build

@@ -61,6 +61,11 @@ Or, for a prettier JSON response, use [jq](https://stedolan.github.io/jq/):
 curl -X POST -H "Content-Type: application/json" \
   -d @./prototype_usa_head_start/situation_examples/disability.json http://localhost:5000/calculate \
   | jq
+
+# Family with income slightly above the federal poverty level
+curl -X POST -H "Content-Type: application/json" \
+  -d @./prototype_usa_head_start/situation_examples/family_slightly_above_100_fpl_il.json http://localhost:5000/calculate \
+  | jq
 ```
 
 ## Rebuild
