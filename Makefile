@@ -45,5 +45,8 @@ test-dev: clean check-syntax-errors
 serve-local: build
 	openfisca serve --country-package prototype_usa_head_start --port 5000
 
+deploy:
+	./scripts/deploy.sh
+
 serve: build
 	openfisca serve --country-package prototype_usa_head_start --bind "0.0.0.0:${PORT}"
