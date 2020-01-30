@@ -18,7 +18,7 @@ make install
 make test
 ```
 
-## Serve this package locally with the OpenFisca Web API
+## Serve Web API locally
 
 To serve the Web API locally, run:
 
@@ -84,11 +84,11 @@ This app has been configured to deploy to [cloud.gov](https://cloud.gov/) with a
 
 See cloud.gov's ["Your first deploy"](https://cloud.gov/docs/getting-started/your-first-deploy/) guide for deployment instructions.
 
-## Sandbox app
+## API on Cloud.gov
 
-Our sandbox prototype app is hosted on cloud.gov at https://prototype-openfisca-usa-headstart.app.cloud.gov/. This app is not reliable or stable, since sandbox deployments are cleared by cloud.gov every 90 days.
+Our prototype API is hosted on cloud.gov at https://prototype-openfisca-usa-headstart.app.cloud.gov/.
 
-If you want to test out the API without serving it locally, feel free to send JSON requests to the sandbox prototype —- just be aware there is no guarantee that the sandbox prototype will be available. There is also no guarantee that the deployed prototype will match the latest API code in this repo, since continuous deployment is not yet set up.
+If you want to test out the API without serving it locally, feel free to send JSON requests to the prototype. Because this is an early-stage prototype, there is no guarantee it will be available. There is also no guarantee that the deployed API will match the latest API code in this repo, since continuous deployment is not yet set up.
 
 ```sh
 # Family that appears eligible
